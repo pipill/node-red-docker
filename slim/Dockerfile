@@ -1,5 +1,5 @@
 FROM pipill/armhf-node:6-alpine
-
+RUN [ "cross-build-start" ]
 # Home directory for Node-RED application source code.
 RUN mkdir -p /usr/src/node-red
 
@@ -18,7 +18,7 @@ USER node-red
 # package.json contains Node-RED NPM module and node dependencies
 COPY package.json /usr/src/node-red/
 RUN npm install
-
+RUN [ "cross-build-end" ]
 # User configuration directory volume
 EXPOSE 1880
 
